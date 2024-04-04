@@ -16,12 +16,12 @@ if ($connection && $connection->connect_error) {
 
 // var_dump($connection);
 // $sql = "SELECT * FROM `students`";
-$sql = "SELECT * FROM `students`
-WHERE YEAR(`date_of_birth`)=1990";
+//$sql = "SELECT * FROM `students`
+// WHERE YEAR(`date_of_birth`)=1990";
 
-$result = $connection->query($sql);
+// $result = $connection->query($sql);
 
-var_dump($result);
+// var_dump($result);
 
 /*
 while ($row = $result -> fetch_assoc()) {
@@ -34,6 +34,23 @@ while ($row = $result -> fetch_assoc()) {
 
     die;
 }*/
+
+
+if (empty($_POST['year_of_birth'])) {
+    $sql = "SELECT `students`.`id`, `students`.`name`, `students`.`surname`, `students`.`date_of_birth`
+            FROM `students`";
+    $result = $connection->query($sql);
+}
+
+if (!empty($_POST['year_of_birth'])) {
+    $year_of_birth = $_POST['year_of_birth'];
+    $sql = "SELECT `students`.`id`, `students`.`name`, `students`.`surname`, `students`.`date_of_birth`
+            FROM `students`
+            WHERE YEAR(`date_of_birth`) = '$year_of_birth' ";
+            //=1990
+   // var_dump($sql);
+    $result = $connection->query($sql);
+}
 ?>
 
 <!DOCTYPE html>
@@ -54,10 +71,23 @@ while ($row = $result -> fetch_assoc()) {
 
     <body>
         <header>
-            <!-- place navbar here -->
+        <header>
+        <nav class="navbar navbar-expand navbar-light bg-light">
+            <div class="nav navbar-nav">
+                <a class="navbar-link" href="/">Students</a>
+                <a class="navbar-link" href="/">Degrees</a>
+            </div>
+        </nav>
+    </header>
         </header>
         <main>
-            <div>
+            <div class="container py-4">
+                <form action="" method="post" class="d-flex mb-5">
+                    <input type="text" name="year_of_birth" id="year_of_birth" placeholder="search by year of birth" class="form-control">
+                    <button class="btn btn-primary">Search</button>
+                    <a href="/" class="text-muted nav-link">Reset</a> 
+                </form>
+
                 <?php while ($row = $result->fetch_assoc()) :
                     ['name' => $name, 'surname' => $surname, 'date_of_birth' => $date_of_birth  ] = $row; ?>
                         <div>
