@@ -58,16 +58,15 @@ while ($row = $result -> fetch_assoc()) {
         </header>
         <main>
             <div>
-                <?php while ($row = $result -> fetch_assoc()) :
+                <?php while ($row = $result->fetch_assoc()) :
                     ['name' => $name, 'surname' => $surname, 'date_of_birth' => $date_of_birth  ] = $row; ?>
-            
                         <div>
                             <strong>Name:</strong>
-                            <?php $name . ' ' . $surname?>
+                            <?= $name . ' ' . $surname ?>
                         </div>
                         <div>
                             <strong>Date of birth:</strong>
-                            <?php $date_of_birth ?>
+                            <?= $date_of_birth ?>
                         </div>
                         <hr>
                     
