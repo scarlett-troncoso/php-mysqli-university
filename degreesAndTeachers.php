@@ -15,13 +15,14 @@ if ($connection && $connection->connect_error) {
 }
 
 // var_dump($connection);
+/*
 $sql = "SELECT `degrees`.`id`, `degrees`.`name` AS `degree`, `courses`.`name` AS `course`, `teachers`.`name` AS `teacher_name`, `teachers`.`surname`
 FROM `degrees`
 JOIN `courses` ON `degrees`.`id` = `courses`.`degree_id`
 JOIN `course_teacher` ON `courses`.`id` = `course_teacher`.`course_id`
 JOIN `teachers` ON `course_teacher`.`teacher_id` = `teachers`.`id`;";
 
-$result = $connection->query($sql);
+$result = $connection->query($sql); */
 
 // var_dump($result);
 
@@ -36,28 +37,35 @@ while ($row = $result -> fetch_assoc()) {
     die;
 }*/
 
-/*
-if (empty($_POST['year_of_birth'])) {
-    $sql = "SELECT `students`.`id`, `students`.`name`, `students`.`surname`, `students`.`date_of_birth`
-            FROM `students`";
+
+if (empty($_POST['degree_search'])) {
+    $sql = "SELECT `degrees`.`id`, `degrees`.`name` AS `degree`, `courses`.`name` AS `course`, `teachers`.`name` AS `teacher_name`, `teachers`.`surname`
+            FROM `degrees`
+            JOIN `courses` ON `degrees`.`id` = `courses`.`degree_id`
+            JOIN `course_teacher` ON `courses`.`id` = `course_teacher`.`course_id`
+            JOIN `teachers` ON `course_teacher`.`teacher_id` = `teachers`.`id`
+            WHERE `degrees`.`name` LIKE '%" . 'Corso' . "%' ";
     $result = $connection->query($sql);
 }
 
-if (!empty($_POST['year_of_birth'])) {
-    $year_of_birth = $_POST['year_of_birth'];
-    $sql = "SELECT `students`.`id`, `students`.`name`, `students`.`surname`, `students`.`date_of_birth`
-            FROM `students`
-            WHERE YEAR(`date_of_birth`) = '$year_of_birth' ";
-            //=1990
+if (!empty($_POST['degree_search'])) {
+    $degree_search = $_POST['degree_search'];
+    $sql = "SELECT `degrees`.`id`, `degrees`.`name` AS `degree`, `courses`.`name` AS `course`, `teachers`.`name` AS `teacher_name`, `teachers`.`surname`
+            FROM `degrees`
+            JOIN `courses` ON `degrees`.`id` = `courses`.`degree_id`
+            JOIN `course_teacher` ON `courses`.`id` = `course_teacher`.`course_id`
+            JOIN `teachers` ON `course_teacher`.`teacher_id` = `teachers`.`id`
+            WHERE `degrees`.`name` LIKE '%" . $degree_search . "%' ";
+
    // var_dump($sql);
     $result = $connection->query($sql);
-}*/
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Students</title>
+        <title>Degrees-and-Teachers</title>
         <meta charset="utf-8" />
         <meta
             name="viewport"
@@ -83,12 +91,11 @@ if (!empty($_POST['year_of_birth'])) {
         </header>
         <main>
             <div class="container py-4">
-                <!--
                 <form action="" method="post" class="d-flex mb-5">
-                    <input type="number" name="year_of_birth" id="year_of_birth" placeholder="search by year of birth" class="form-control">
+                    <input type="text" name="degree_search" id="degree_search" placeholder="search by Degree" class="form-control">
                     <button class="btn btn-primary">Search</button>
                     <a href="/" class="text-muted nav-link">Reset</a> 
-                </form> -->  
+                </form>
                     <table class="table">
                         <thead>
                             <tr>
