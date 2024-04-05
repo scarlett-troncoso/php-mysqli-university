@@ -83,24 +83,30 @@ if (!empty($_POST['year_of_birth'])) {
         <main>
             <div class="container py-4">
                 <form action="" method="post" class="d-flex mb-5">
-                    <input type="number" name="year_of_birth" id="year_of_birth" placeholder="search by year of birth" class="form-control">
+                    <input type="number" name="year_of_birth" id="year_of_birth" placeholder="enter student's year of birth" class="form-control">
                     <button class="btn btn-primary">Search</button>
                     <a href="/" class="text-muted nav-link">Reset</a> 
                 </form>
 
-                <?php while ($row = $result->fetch_assoc()) :
-                    ['name' => $name, 'surname' => $surname, 'date_of_birth' => $date_of_birth  ] = $row; ?>
-                        <div>
-                            <strong>Name:</strong>
-                            <?= $name . ' ' . $surname ?>
-                        </div>
-                        <div>
-                            <strong>Date of birth:</strong>
-                            <?= $date_of_birth ?>
-                        </div>
-                        <hr>
-                    
-                <?php endwhile; ?>
+                <table class="table">
+                        <thead>
+                            <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Date of Birth</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php while ($row = $result->fetch_assoc()) :
+                            ['id' => $id, 'name' => $name, 'surname' => $surname, 'date_of_birth' => $date_of_birth ] = $row; ?> 
+                                <tr>
+                                    <th scope="row"><?= $id ?></th>
+                                    <td><?= $name . ' ' . $surname ?></td>
+                                    <td><?= $date_of_birth ?></td>
+                                </tr>
+                            <?php endwhile; ?>
+                        </tbody>
+                    </table> 
             </div>
     
         </main>
