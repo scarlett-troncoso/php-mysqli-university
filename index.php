@@ -72,10 +72,11 @@ if (!empty($_POST['year_of_birth'])) {
     <body>
         
         <header>
-            <nav class="navbar navbar-expand navbar-light bg-light">
+            <nav class="navbar navbar-expand navbar-light bg-light container">
                 <div class="nav navbar-nav">
-                    <a class="navbar-link" href="./index.php">Students</a>
-                    <a class="navbar-link" href="./degrees.php">Degrees</a>
+                    <a class="navbar-link mx-2" href="./index.php">Students</a>
+                    <a class="navbar-link mx-2" href="./degrees.php">Degrees</a>
+                    <a class="navbar-link mx-2" href="./degreesAndTeachers.php">All Degrees and Courses</a>
                 </div>
             </nav>  
         </header>

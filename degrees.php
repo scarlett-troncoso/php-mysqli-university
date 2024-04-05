@@ -23,8 +23,7 @@ $result = $connection->query($sql);
 
 /*
 while ($row = $result -> fetch_assoc()) {
-   // var_dump($row);
-   // var_dump($row['date_of_birth']); 
+   // var_dump($row); 
 
     ['name' => $name, 'period' => $period, 'year' => $year  ] = $row; // destructuring
 
@@ -33,28 +32,6 @@ while ($row = $result -> fetch_assoc()) {
     die;
 }*/
 
-/*
-SELECT *
-FROM `courses`
-WHERE `period` = 'I semestre'
-AND `year` = 1; */
-
-/*
-if (empty($_POST['year_of_birth'])) {
-    $sql = "SELECT `students`.`id`, `students`.`name`, `students`.`surname`, `students`.`date_of_birth`
-            FROM `students`";
-    $result = $connection->query($sql);
-}
-
-if (!empty($_POST['year_of_birth'])) {
-    $year_of_birth = $_POST['year_of_birth'];
-    $sql = "SELECT `students`.`id`, `students`.`name`, `students`.`surname`, `students`.`date_of_birth`
-            FROM `students`
-            WHERE YEAR(`date_of_birth`) = '$year_of_birth' ";
-            //=1990
-   // var_dump($sql);
-    $result = $connection->query($sql);
-}*/
 ?>
 
 <!DOCTYPE html>
@@ -76,10 +53,11 @@ if (!empty($_POST['year_of_birth'])) {
     <body>
         
         <header>
-            <nav class="navbar navbar-expand navbar-light bg-light">
+            <nav class="navbar navbar-expand navbar-light bg-light container">
                 <div class="nav navbar-nav">
-                    <a class="navbar-link" href="./index.php">Students</a>
-                    <a class="navbar-link" href="./degrees.php">Degrees</a>
+                    <a class="navbar-link mx-2" href="./index.php">Students</a>
+                    <a class="navbar-link mx-2" href="./degrees.php">Degrees</a>
+                    <a class="navbar-link mx-2" href="./degreesAndTeachers.php">All Degrees and Courses</a>
                 </div>
             </nav>  
         </header>
