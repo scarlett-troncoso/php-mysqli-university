@@ -37,7 +37,7 @@ while ($row = $result -> fetch_assoc()) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Students</title>
+        <title>Degrees</title>
         <meta charset="utf-8" />
         <meta
             name="viewport"
