@@ -56,7 +56,7 @@ if (!empty($_POST['year_of_birth'])) {
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>index php-mysqli-university</title>
+        <title>Students</title>
         <meta charset="utf-8" />
         <meta
             name="viewport"
@@ -70,20 +70,19 @@ if (!empty($_POST['year_of_birth'])) {
     </head>
 
     <body>
+        
         <header>
-        <header>
-        <nav class="navbar navbar-expand navbar-light bg-light">
-            <div class="nav navbar-nav">
-                <a class="navbar-link" href="/">Students</a>
-                <a class="navbar-link" href="/">Degrees</a>
-            </div>
-        </nav>
-    </header>
+            <nav class="navbar navbar-expand navbar-light bg-light">
+                <div class="nav navbar-nav">
+                    <a class="navbar-link" href="./index.php">Students</a>
+                    <a class="navbar-link" href="./degrees.php">Degrees</a>
+                </div>
+            </nav>  
         </header>
         <main>
             <div class="container py-4">
                 <form action="" method="post" class="d-flex mb-5">
-                    <input type="text" name="year_of_birth" id="year_of_birth" placeholder="search by year of birth" class="form-control">
+                    <input type="number" name="year_of_birth" id="year_of_birth" placeholder="search by year of birth" class="form-control">
                     <button class="btn btn-primary">Search</button>
                     <a href="/" class="text-muted nav-link">Reset</a> 
                 </form>
